@@ -15,6 +15,7 @@ import numpy as np
 
 # variables declaration
 Range=620
+InitialT=0
 Mag=[[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0]]
 times=[[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0]]
 CRR=[[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0]]
@@ -60,7 +61,7 @@ MagT=np.transpose(Mag)
 
 # magnetic data representation
 for x in range (0,len(Mag)):
-    plt.plot(times[x][0:Range]/1000,Mag[x][0:Range])
+    plt.plot(times[x][InitialT:InitialT+Range]/1000,Mag[x][InitialT:InitialT+Range])
 plt.title('Mirnov Data')
 plt.ylabel('Magnetic Flux [Wb]')
 plt.xlabel('t [ms]')
@@ -82,7 +83,7 @@ Ipft=np.transpose(Ipf)
 
 # Current of each of the 12 filaments
 for x in range (0,len(Ipft)):
-    plt.plot(times[x][0:Range]/1000,Ipft[x])
+    plt.plot(times[x][InitialT:InitialT+Range]/1000,Ipft[x])
 plt.title('Ip,f for each filament')
 plt.ylabel('I [A]')
 plt.xlabel('t [ms]')
@@ -90,8 +91,8 @@ plt.show()
 
 # Radial position of the plasma current centroid
 plt.subplot(1,2,1)
-plt.plot(times[0][0:Range]/1000,Ro,label='Magentics')
-plt.plot(timesRpos[0:Range]/1000,rpos[0:Range],label='MARTE')
+plt.plot(times[0][InitialT:InitialT+Range]/1000,Ro,label='Magentics')
+plt.plot(timesRpos[InitialT:InitialT+Range]/1000,rpos[InitialT:InitialT+Range],label='MARTE')
 plt.title('Radial Position')
 plt.ylabel('r [m]')
 plt.xlabel('t [ms]')
@@ -100,8 +101,8 @@ plt.grid(True)
 
 # Z position of the plasma current centroid
 plt.subplot(1,2,2)
-plt.plot(times[0][0:Range]/1000,Zo,label='Magnetics')
-plt.plot(timesZpos[0:Range]/1000,zpos[0:Range],label='MARTE')
+plt.plot(times[0][InitialT:InitialT+Range]/1000,Zo,label='Magnetics')
+plt.plot(timesZpos[InitialT:InitialT+Range]/1000,zpos[InitialT:InitialT+Range],label='MARTE')
 plt.title('Z position')
 plt.ylabel('z [m]')
 plt.xlabel('t [ms]')
